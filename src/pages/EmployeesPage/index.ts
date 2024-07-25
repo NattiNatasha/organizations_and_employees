@@ -1,0 +1,1 @@
+export {EmployeesPageLazy as EmployeesPage} from './ui/EmployeesPage.lazy'
