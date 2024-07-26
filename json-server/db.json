@@ -22,12 +22,14 @@
   "employees": [
     {
       "id": "1",
-      "firstName": "Иван",
+      "firstName": "Олег",
       "lastName": "Иванов",
       "position": "Генеральный директор",
       "meta": {
         "companyId": "1"
-      }
+      },
+      "firstname": "Ива",
+      "lastname": "Ивано"
     },
     {
       "id": "3",
@@ -59,7 +61,7 @@
     {
       "id": "6",
       "firstName": "Александр",
-      "lastName": "Петров",
+      "lastName": "Аникин",
       "position": "Генеральный директор",
       "meta": {
         "companyId": "3"
@@ -135,6 +137,15 @@
       "position": "Генеральный директор",
       "meta": {
         "companyId": "7"
+      }
+    },
+    {
+      "id": "1721993471370",
+      "firstName": "Наталья",
+      "lastName": "Горлова",
+      "position": "Менеджер",
+      "meta": {
+        "companyId": "3"
       }
     }
   ]

@@ -65,7 +65,10 @@ export const CompaniesActions = ({params}: any) => {
         </IconButton>
       </Tooltip>
     </Box>
-    <AddEditCompanyForm open={showModal} handleClose={handleCloseModal} data={isEditMode ? params.row : null}/>
+    <AddEditCompanyForm 
+        open={showModal} 
+        handleClose={handleCloseModal} 
+        data={isEditMode ? params.row : null}/>
     </>
   );
 };

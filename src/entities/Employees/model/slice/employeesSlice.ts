@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import { Employee, EmployeesSchema } from '../types/EmployeesSchema'
 import { fetchEmployeesByCompanyId } from '../services/fetchEmployeesByCompanyId'
 import { deleteEmployee } from '../services/deleteEmployee'
+import { editEmployee } from '../services/editEmployee'
+import { addEmployee } from '../services/addEmployee'
 
 const initialState: EmployeesSchema = {
     data: [] as Array<Employee>,
@@ -37,6 +39,30 @@ export const employeesSlice = createSlice({
                 state.data = state.data?.filter(item => item.id !== action.payload.id)
             })
             .addCase(deleteEmployee.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
+            .addCase(editEmployee.pending, (state) => {
+                state.error = undefined
+                state.isLoading = true
+            })
+            .addCase(editEmployee.fulfilled, (state, action: any) => {
+                state.isLoading = false
+                state.data = state.data?.filter(item => item.id !== action.payload.id).concat(action.payload)
+            })
+            .addCase(editEmployee.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
+            .addCase(addEmployee.pending, (state) => {
+                state.error = undefined
+                state.isLoading = true
+            })
+            .addCase(addEmployee.fulfilled, (state, action: any) => {
+                state.isLoading = false
+                state.data = state?.data?.concat(action.payload)
+            })
+            .addCase(addEmployee.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload
             })
