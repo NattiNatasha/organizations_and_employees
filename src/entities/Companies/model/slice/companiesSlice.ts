@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import { Company, CompaniesSchema } from '../types/company'
 import { fetchCompaniesList } from '../services/fetchCompaniesList'
 import { deleteCompany } from '../services/deleteCompany'
+import { editCompany } from '../services/editCompany'
+import { addCompany } from '../services/addCompany'
 
 const initialState: CompaniesSchema = {
     companies: [] as Array<Company>,
@@ -37,6 +39,30 @@ export const companiesSlice = createSlice({
                 state.companies = state.companies?.filter(item => item.id !== action.payload.id)
             })
             .addCase(deleteCompany.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
+            .addCase(editCompany.pending, (state) => {
+                state.error = undefined
+                state.isLoading = true
+            })
+            .addCase(editCompany.fulfilled, (state, action: any) => {
+                state.isLoading = false
+                state.companies = state.companies?.filter(item => item.id !== action.payload.id).concat(action.payload)
+            })
+            .addCase(editCompany.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
+            .addCase(addCompany.pending, (state) => {
+                state.error = undefined
+                state.isLoading = true
+            })
+            .addCase(addCompany.fulfilled, (state, action: any) => {
+                state.isLoading = false
+                state.companies = state?.companies?.concat(action.payload)
+            })
+            .addCase(addCompany.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload
             })
