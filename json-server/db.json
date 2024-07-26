@@ -1,153 +1,135 @@
 {
-    "companies": [
-      { 
-        "id": "1", 
-        "title": "Компания 1", 
-        "address": "г. Москва, ул. Академика Королева, 50", 
-        "numberOfEmployees": 2 
-      },
-      { 
-        "id": "2", 
-        "title": "Компания 2", 
-        "address": "г. Москва, ул. Академика Королева, 12", 
-        "numberOfEmployees": 3 
-      },
-      { 
-        "id": "3", 
-        "title": "Компания 3", 
-        "address": "г. Москва, ул. Академика Королева, 80", 
-        "numberOfEmployees": 2
-      },
-      { 
-        "id": "4", 
-        "title": "Компания 4", 
-        "address": "г. Москва, ул. Академика Королева, 35", 
-        "numberOfEmployees": 2 
-      },
-      { 
-        "id": "5", 
-        "title": "Компания 5", 
-        "address": "г. Москва, ул. Академика Королева, 11", 
-        "numberOfEmployees": 3 
-      },
-      { 
-        "id": "6", 
-        "title": "Компания 6", 
-        "address": "г. Москва, ул. Академика Королева, 10", 
-        "numberOfEmployees": 2 
-      },
-      { 
-        "id": "7", 
-        "title": "Компания 7", 
-        "address": "г. Москва, ул. Академика Королева, 76", 
-        "numberOfEmployees": 1 
+  "companies": [
+    {
+      "id": "1",
+      "title": "Компания 1",
+      "address": "г. Москва, ул. Академика Королева, 50",
+      "INN": "7707083893"
+    },
+    {
+      "id": "3",
+      "title": "Компания 3",
+      "address": "г. Москва, ул. Академика Королева, 80",
+      "INN": "7707083894"
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "firstName": "Иван",
+      "lastName": "Иванов",
+      "position": "Генеральный директор",
+      "meta": {
+        "companyId": "1"
       }
-    ],
-    "employees": [
-      { 
-        "id": "1", 
-        "companyId": "1", 
-        "firstName": "Иван", 
-        "lastName": "Иванов", 
-        "position": "Генеральный директор"
-      },
-      { 
-        "id": "2", 
-        "companyId": "1", 
-        "firstName": "Андрей", 
-        "lastName": "Петров", 
-        "position": "Менеджер по продажам"
-      },
-      { 
-        "id": "3", 
-        "companyId": "2", 
-        "firstName": "Мария", 
-        "lastName": "Петрова", 
-        "position": "Генеральный директор"
-      },
-      { 
-        "id": "4", 
-        "companyId": "2", 
-        "firstName": "Алена", 
-        "lastName": "Иванова", 
-        "position": "Маркетолог"
-      },
-      { 
-        "id": "5", 
-        "companyId": "2", 
-        "firstName": "Олег", 
-        "lastName": "Сидоров", 
-        "position": "Дизайнер"
-      },
-      { 
-        "id": "6", 
-        "companyId": "3", 
-        "firstName": "Александр", 
-        "lastName": "Петров", 
-        "position": "Генеральный директор"
-      },
-      { 
-        "id": "7", 
-        "companyId": "3", 
-        "firstName": "Иван", 
-        "lastName": "Макаров", 
-        "position": "Инженер"
-      },
-      { 
-        "id": "8", 
-        "companyId": "4", 
-        "firstName": "Ольга", 
-        "lastName": "Завьялова", 
-        "position": "Генеральный директор"
-      },
-      { 
-        "id": "9", 
-        "companyId": "4", 
-        "firstName": "Игорь", 
-        "lastName": "Левченко", 
-        "position": "Менеджер по продажам"
-      },
-      { 
-        "id": "10", 
-        "companyId": "5", 
-        "firstName": "Максим", 
-        "lastName": "Сапунов", 
-        "position": "Генеральный директор"
-      },
-      { 
-        "id": "11", 
-        "companyId": "5", 
-        "firstName": "Елена", 
-        "lastName": "Боровикова", 
-        "position": "Frontend-разработчик"
-      },
-      { 
-        "id": "12", 
-        "companyId": "5", 
-        "firstName": "Евгений", 
-        "lastName": "Аниковский", 
-        "position": "Java-разработчик"
-      },
-      { 
-        "id": "13", 
-        "companyId": "6", 
-        "firstName": "Николай", 
-        "lastName": "Николаев", 
-        "position": "Генеральный директор"
-      },
-      { 
-        "id": "14", 
-        "companyId": "6", 
-        "firstName": "Виталий", 
-        "lastName": "Красиков", 
-        "position": "Главный бухгалтер"
-      },
-      { 
-        "id": "15", 
-        "companyId": "7", 
-        "firstName": "Андрей", 
-        "lastName": "Вишневский", 
-        "position": "Генеральный директор"
+    },
+    {
+      "id": "3",
+      "firstName": "Мария",
+      "lastName": "Петрова",
+      "position": "Генеральный директор",
+      "meta": {
+        "companyId": "2"
       }
-    ]
-  }
+    },
+    {
+      "id": "4",
+      "firstName": "Алена",
+      "lastName": "Иванова",
+      "position": "Маркетолог",
+      "meta": {
+        "companyId": "2"
+      }
+    },
+    {
+      "id": "5",
+      "firstName": "Олег",
+      "lastName": "Сидоров",
+      "position": "Дизайнер",
+      "meta": {
+        "companyId": "2"
+      }
+    },
+    {
+      "id": "6",
+      "firstName": "Александр",
+      "lastName": "Петров",
+      "position": "Генеральный директор",
+      "meta": {
+        "companyId": "3"
+      }
+    },
+    {
+      "id": "8",
+      "firstName": "Ольга",
+      "lastName": "Завьялова",
+      "position": "Генеральный директор",
+      "meta": {
+        "companyId": "4"
+      }
+    },
+    {
+      "id": "9",
+      "firstName": "Игорь",
+      "lastName": "Левченко",
+      "position": "Менеджер по продажам",
+      "meta": {
+        "companyId": "4"
+      }
+    },
+    {
+      "id": "10",
+      "firstName": "Максим",
+      "lastName": "Сапунов",
+      "position": "Генеральный директор",
+      "meta": {
+        "companyId": "5"
+      }
+    },
+    {
+      "id": "11",
+      "firstName": "Елена",
+      "lastName": "Боровикова",
+      "position": "Frontend-разработчик",
+      "meta": {
+        "companyId": "5"
+      }
+    },
+    {
+      "id": "12",
+      "firstName": "Евгений",
+      "lastName": "Аниковский",
+      "position": "Java-разработчик",
+      "meta": {
+        "companyId": "5"
+      }
+    },
+    {
+      "id": "13",
+      "firstName": "Николай",
+      "lastName": "Николаев",
+      "position": "Генеральный директор",
+      "meta": {
+        "companyId": "6"
+      }
+    },
+    {
+      "id": "14",
+      "firstName": "Виталий",
+      "lastName": "Красиков",
+      "position": "Главный бухгалтер",
+      "meta": {
+        "companyId": "6"
+      }
+    },
+    {
+      "id": "15",
+      "firstName": "Андрей",
+      "lastName": "Вишневский",
+      "position": "Генеральный директор",
+      "meta": {
+        "companyId": "7"
+      }
+    }
+  ]
+}

@@ -1,6 +1,8 @@
+import { EmployeesList } from "../../../entities/Employees"
+
 const EmployeesPage = () => {
     return (
-        <div>Employees Page</div>
+        <EmployeesList />
     )
 }
 

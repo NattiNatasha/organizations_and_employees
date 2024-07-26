@@ -1,6 +1,9 @@
+import { CompaniesList } from "../../../entities/Companies"
+
 const MainPage = () => {
+    
     return (
-        <div>Main Page</div>
+        <CompaniesList />
     )
 }
 
