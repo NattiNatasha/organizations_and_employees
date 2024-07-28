@@ -30,5 +30,5 @@ npm run dev
 ```
 3. Запуск json-server: 
 ```sh
- npx json-server json-server/db.json
+npx json-server json-server/db.json
 ```
