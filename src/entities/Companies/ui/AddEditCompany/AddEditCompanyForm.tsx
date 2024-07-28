@@ -13,6 +13,7 @@ import { Formik } from "formik";
 import { AppDispatch } from "../../../../app/providers/StoreProvider/config/store";
 import { editCompany } from "../../model/services/editCompany";
 import { addCompany } from "../../model/services/addCompany";
+import { schemaAddEditCompany } from "../../validationSchema/validationSchema";
 
 interface AddEditCompanyFormProps {
   data?: any;
@@ -45,8 +46,9 @@ export const AddEditCompanyForm = ({ open, handleClose, data }: AddEditCompanyFo
         initialValues={{
           title: data?.title || "",
           address: data?.address || "",
-          INN: data?.INN || ""
+          INN: data?.INN || null
         }}
+        validationSchema={schemaAddEditCompany}
         onSubmit={(values) => {
 
           if (data?.id) {
@@ -78,6 +80,7 @@ export const AddEditCompanyForm = ({ open, handleClose, data }: AddEditCompanyFo
               onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.title && errors.title)}
+              helperText={errors.title?.toString()}
               type="text"
               fullWidth
               required
@@ -92,6 +95,7 @@ export const AddEditCompanyForm = ({ open, handleClose, data }: AddEditCompanyFo
               onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.address && errors.address)}
+              helperText={errors.address?.toString()}
               fullWidth
               required
             />
@@ -105,6 +109,7 @@ export const AddEditCompanyForm = ({ open, handleClose, data }: AddEditCompanyFo
               onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.INN && errors.INN)}
+              helperText={errors.INN?.toString()}
               fullWidth
               required
             />

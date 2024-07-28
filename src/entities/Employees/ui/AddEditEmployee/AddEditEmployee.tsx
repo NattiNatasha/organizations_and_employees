@@ -1,4 +1,6 @@
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+
 import { Close } from "@mui/icons-material"
 import { 
     Button, 
@@ -9,11 +11,13 @@ import {
     IconButton, 
     TextField 
 } from "@mui/material"
+
 import { Formik } from "formik";
+
 import { AppDispatch } from "../../../../app/providers/StoreProvider/config/store";
 import { editEmployee } from "../../model/services/editEmployee";
 import { addEmployee } from "../../model/services/addEmployee";
-import { useParams } from "react-router-dom";
+import { schemaAddEditEmployee } from "../../validationSchema/validationSchema";
 
 interface AddEditEmployeeFormProps {
   data?: any;
@@ -49,6 +53,7 @@ export const AddEditEmployeeForm = ({ open, handleClose, data }: AddEditEmployee
           lastName: data?.lastName || "",
           position: data?.position || ""
         }}
+        validationSchema={schemaAddEditEmployee}
         onSubmit={(values) => {
 
           if (data?.id) {
@@ -86,6 +91,7 @@ export const AddEditEmployeeForm = ({ open, handleClose, data }: AddEditEmployee
               onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.firstName && errors.firstName)}
+              helperText={errors.firstName?.toString()}
               type="text"
               fullWidth
               required
@@ -100,6 +106,7 @@ export const AddEditEmployeeForm = ({ open, handleClose, data }: AddEditEmployee
               onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.lastName && errors.lastName)}
+              helperText={errors.lastName?.toString()}
               fullWidth
               required
             />
@@ -113,6 +120,7 @@ export const AddEditEmployeeForm = ({ open, handleClose, data }: AddEditEmployee
               onChange={handleChange}
               onBlur={handleBlur}
               error={Boolean(touched.position && errors.position)}
+              helperText={errors.position?.toString()}
               fullWidth
               required
             />

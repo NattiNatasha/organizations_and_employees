@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 
-import { Box, Typography } from '@mui/material';
 import { DataGrid, gridClasses } from '@mui/x-data-grid';
 import { grey } from '@mui/material/colors';
 
@@ -22,34 +21,20 @@ export const CompaniesList = () => {
     }, [dispatch])
 
     return (
-        <Box
+        <DataGrid
+            columns={columns}
+            rows={companies.companies}
+            getRowId={(row) => row.id}
+            getRowSpacing={(params) => ({
+            top: params.isFirstVisible ? 0 : 5,
+            bottom: params.isLastVisible ? 0 : 5,
+            })}
             sx={{
-            height: 400,
-            width: '100%',
+            [`& .${gridClasses.row}`]: {
+                bgcolor: (theme) =>
+                theme.palette.mode === 'light' ? grey[200] : grey[900],
+            },
         }}
-        >
-            <Typography
-                variant="h3"
-                component="h3"
-                sx={{ textAlign: 'center', mt: 3, mb: 3 }}
-            >
-                Справочник организаций
-            </Typography>
-            <DataGrid
-                columns={columns}
-                rows={companies.companies}
-                getRowId={(row) => row.id}
-                getRowSpacing={(params) => ({
-                top: params.isFirstVisible ? 0 : 5,
-                bottom: params.isLastVisible ? 0 : 5,
-                })}
-                sx={{
-                [`& .${gridClasses.row}`]: {
-                    bgcolor: (theme) =>
-                    theme.palette.mode === 'light' ? grey[200] : grey[900],
-                },
-            }}
-        />
-    </Box>
+    />
   );
 }
