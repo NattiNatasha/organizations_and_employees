@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 import { tss } from "tss-react/mui";
 import Button from "@mui/material/Button";
 import { grey } from '@mui/material/colors';
@@ -9,7 +9,7 @@ interface ButtonProps {
     handleClick: () => void;
 };
 
-export const CustomButton = ({className, children, handleClick}: ButtonProps) => {
+export const CustomButton = memo(({className, children, handleClick}: ButtonProps) => {
 
     const { classes, cx } = useStyles();
 
@@ -23,7 +23,7 @@ export const CustomButton = ({className, children, handleClick}: ButtonProps) =>
             {children}
         </Button>
     );
-}
+})
 
 const useStyles = tss
     .create(()=> ({
@@ -31,6 +31,6 @@ const useStyles = tss
             background: grey[900],
             "&:hover": {
                 background: grey[700],
-            },
-        }
-    }));
+        },
+    }
+}));

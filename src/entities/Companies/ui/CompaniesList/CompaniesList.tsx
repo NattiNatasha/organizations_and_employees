@@ -33,7 +33,7 @@ export const CompaniesList = () => {
                 component="h3"
                 sx={{ textAlign: 'center', mt: 3, mb: 3 }}
             >
-                Список организаций
+                Справочник организаций
             </Typography>
             <DataGrid
                 columns={columns}
