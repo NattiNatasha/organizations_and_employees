@@ -1,13 +1,13 @@
 import { useCallback, useState } from "react"
-
-import { Add } from "@mui/icons-material"
-import { Tooltip, IconButton } from "@mui/material"
-import { grey } from "@mui/material/colors"
+import { tss } from "tss-react"
 
 import { AddEditCompanyForm } from "../../entities/Companies/ui/AddEditCompany/AddEditCompanyForm"
+import { CustomButton } from "../../shared/ui/Button"
 
 export const AddCompany = () => {
     const [showModal, setShowModal] = useState(false)
+
+    const { classes } = useStyles();
 
     const handleAddCompany = useCallback(() => {
         setShowModal(true)
@@ -19,13 +19,12 @@ export const AddCompany = () => {
 
     return (
         <>
-            <Tooltip title="Добавить">
-                <IconButton 
-                    onClick={handleAddCompany} 
-                    sx={{display: 'flex', background: grey[200], marginBottom: '10px', marginLeft: 'auto'}}>
-                    <Add />
-                </IconButton>
-            </Tooltip>
+            <CustomButton 
+                handleClick={handleAddCompany}
+                className={classes.custombutton}
+            >
+                ДОБАВИТЬ
+            </CustomButton>
             <AddEditCompanyForm 
                 open={showModal} 
                 handleClose={handleCloseModal} 
@@ -33,3 +32,12 @@ export const AddCompany = () => {
         </>
     )
 }
+
+const useStyles = tss
+    .create(()=> ({
+        custombutton: {
+            marginBottom: '10px', 
+            marginLeft: 'auto',
+            display: 'flex'
+    }
+}));

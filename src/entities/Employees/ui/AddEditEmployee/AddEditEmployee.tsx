@@ -1,4 +1,5 @@
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { Close } from "@mui/icons-material"
@@ -8,7 +9,11 @@ import {
     DialogActions, 
     DialogContent, 
     DialogTitle, 
+    FormControl, 
     IconButton, 
+    InputLabel, 
+    MenuItem, 
+    Select, 
     TextField 
 } from "@mui/material"
 
@@ -18,9 +23,12 @@ import { AppDispatch } from "../../../../app/providers/StoreProvider/config/stor
 import { editEmployee } from "../../model/services/editEmployee";
 import { addEmployee } from "../../model/services/addEmployee";
 import { schemaAddEditEmployee } from "../../validationSchema/validationSchema";
+import { Employee } from "../../model/types/EmployeesSchema";
+import { getPositions } from "../../model/selectors/getPositions";
+import { fetchPositions } from "../../model/services/fetchPositions";
 
 interface AddEditEmployeeFormProps {
-  data?: any;
+  data?: Employee;
   open: boolean;
   handleClose: () => void;
 }
@@ -28,6 +36,14 @@ interface AddEditEmployeeFormProps {
 export const AddEditEmployeeForm = ({ open, handleClose, data }: AddEditEmployeeFormProps) => {
 
   const dispatch = useDispatch<AppDispatch>()
+  const positions = useSelector(getPositions)
+
+  useEffect(() => {
+
+    dispatch(fetchPositions(null))
+
+  }, [dispatch])
+
   const { id } = useParams()
 
   return (
@@ -110,20 +126,22 @@ export const AddEditEmployeeForm = ({ open, handleClose, data }: AddEditEmployee
               fullWidth
               required
             />
-            <TextField
-              margin="normal"
-              variant="standard"
-              id="position"
-              label="Должность"
-              type="text"
-              value={values.position}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={Boolean(touched.position && errors.position)}
-              helperText={errors.position?.toString()}
-              fullWidth
-              required
-            />
+            <FormControl fullWidth sx={{marginTop: "10px"}}>
+              <InputLabel id="position-label">Должность</InputLabel>
+              <Select
+                labelId="position-label"
+                id="position"
+                name="position"
+                value={values.position}
+                label="Должность"
+                onChange={handleChange}
+                required
+              >
+                {positions?.data?.map(({id, title}) => (
+                  <MenuItem key={id} value={title}>{title}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
         </DialogContent>
         <DialogActions sx={{ px: '19px' }}>
           <Button 

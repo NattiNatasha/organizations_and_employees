@@ -48,7 +48,8 @@ export const employeesSlice = createSlice({
             })
             .addCase(editEmployee.fulfilled, (state, action: any) => {
                 state.isLoading = false
-                state.data = state.data?.filter(item => item.id !== action.payload.id).concat(action.payload)
+                const stateWithoutUpdatedItem = state.data?.filter(item => item.id !== action.payload.id)
+                state.data = [action.payload, ...stateWithoutUpdatedItem!]
             })
             .addCase(editEmployee.rejected, (state, action) => {
                 state.isLoading = false
@@ -58,9 +59,9 @@ export const employeesSlice = createSlice({
                 state.error = undefined
                 state.isLoading = true
             })
-            .addCase(addEmployee.fulfilled, (state, action: any) => {
+            .addCase(addEmployee.fulfilled, (state, action) => {
                 state.isLoading = false
-                state.data = state?.data?.concat(action.payload)
+                state.data = [action.payload as Employee, ...state.data as Employee[]]
             })
             .addCase(addEmployee.rejected, (state, action) => {
                 state.isLoading = false

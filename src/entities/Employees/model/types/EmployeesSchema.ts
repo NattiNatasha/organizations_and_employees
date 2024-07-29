@@ -3,7 +3,7 @@ export interface Employee {
     companyId?: string;
     firstName: string; 
     lastName: string;
-    position: number;
+    position: string;
 }
 
 export interface EmployeesSchema {

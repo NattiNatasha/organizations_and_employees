@@ -1,12 +1,13 @@
 import { useCallback, useState } from "react"
+import { tss } from "tss-react"
 
-import { Add } from "@mui/icons-material"
-import { Tooltip, IconButton } from "@mui/material"
-import { grey } from "@mui/material/colors"
 import { AddEditEmployeeForm } from "../../entities/Employees/ui/AddEditEmployee/AddEditEmployee"
+import { CustomButton } from "../../shared/ui/Button"
 
 export const AddEmployee = () => {
     const [showModal, setShowModal] = useState(false)
+
+    const { classes } = useStyles();
 
     const handleAddEmployee = useCallback(() => {
         setShowModal(true)
@@ -18,13 +19,12 @@ export const AddEmployee = () => {
 
     return (
         <>
-            <Tooltip title="Добавить">
-                <IconButton 
-                    onClick={handleAddEmployee} 
-                    sx={{display: 'flex', background: grey[200], marginBottom: '10px', marginLeft: 'auto'}}>
-                    <Add />
-                </IconButton>
-            </Tooltip>
+            <CustomButton 
+                handleClick={handleAddEmployee}
+                className={classes.custombutton}
+            >
+                ДОБАВИТЬ
+            </CustomButton>
             <AddEditEmployeeForm
                 open={showModal} 
                 handleClose={handleCloseModal} 
@@ -32,3 +32,12 @@ export const AddEmployee = () => {
         </>
     )
 }
+
+const useStyles = tss
+    .create(()=> ({
+        custombutton: {
+            marginBottom: '10px', 
+            marginLeft: 'auto',
+            display: 'flex'
+    }
+}));

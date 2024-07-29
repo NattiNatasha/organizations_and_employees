@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { Company, CompaniesSchema } from '../types/company'
 import { fetchCompaniesList } from '../services/fetchCompaniesList'
@@ -48,7 +48,8 @@ export const companiesSlice = createSlice({
             })
             .addCase(editCompany.fulfilled, (state, action: any) => {
                 state.isLoading = false
-                state.companies = state.companies?.filter(item => item.id !== action.payload.id).concat(action.payload)
+                const stateWithoutUpdatedItem = state.companies?.filter(item => item.id !== action.payload.id)
+                state.companies = [action.payload, ...stateWithoutUpdatedItem!]
             })
             .addCase(editCompany.rejected, (state, action) => {
                 state.isLoading = false
@@ -60,7 +61,7 @@ export const companiesSlice = createSlice({
             })
             .addCase(addCompany.fulfilled, (state, action: any) => {
                 state.isLoading = false
-                state.companies = state?.companies?.concat(action.payload)
+                state.companies = [action.payload, ...state.companies as Company[]]
             })
             .addCase(addCompany.rejected, (state, action) => {
                 state.isLoading = false

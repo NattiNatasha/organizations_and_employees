@@ -14,9 +14,10 @@ import { AppDispatch } from "../../../../app/providers/StoreProvider/config/stor
 import { editCompany } from "../../model/services/editCompany";
 import { addCompany } from "../../model/services/addCompany";
 import { schemaAddEditCompany } from "../../validationSchema/validationSchema";
+import { Company } from "../../model/types/company";
 
 interface AddEditCompanyFormProps {
-  data?: any;
+  data?: Company;
   open: boolean;
   handleClose: () => void;
 }

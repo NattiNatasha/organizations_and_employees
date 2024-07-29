@@ -2,7 +2,7 @@ export interface Company {
     id: string | ""; 
     title: string; 
     address: string;
-    INN: string;
+    INN: string | null;
 }
 
 export interface CompaniesSchema {
